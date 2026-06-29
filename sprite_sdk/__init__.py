@@ -12,7 +12,7 @@ from starlette.responses import Response
 from starlette.websockets import WebSocket
 
 
-SPRITE_ENDPOINT = "http://localhost:8000/events"
+SPRITE_ENDPOINT = "https://sprite-app-production-7715.up.railway.app/api/events"
 
 _config: dict = {}
 _ctx_trace_id: ContextVar[str] = ContextVar('trace_id', default=None)
@@ -20,10 +20,9 @@ _ctx_session_id: ContextVar[str] = ContextVar('session_id', default=None)
 _ctx_user_id: ContextVar[str] = ContextVar('user_id', default=None)
 
 
-def init(version: str = "unknown", environment: str = "production", endpoint: str = SPRITE_ENDPOINT):
+def init(environment: str = "production", endpoint: str = SPRITE_ENDPOINT):
     global _config
     _config = {
-        "version": version,
         "environment": environment,
         "endpoint": endpoint,
     }
